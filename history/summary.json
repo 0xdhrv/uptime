@@ -4,19 +4,19 @@
     "url": "https://wf.dhrv.pw",
     "icon": "https://icons.duckduckgo.com/ip3/wf.dhrv.pw.ico",
     "slug": "week-flow",
-    "status": "down",
-    "uptime": "99.97%",
-    "uptimeDay": "99.96%",
-    "uptimeWeek": "99.97%",
-    "uptimeMonth": "99.97%",
-    "uptimeYear": "99.97%",
-    "time": 224,
-    "timeDay": 247,
-    "timeWeek": 224,
-    "timeMonth": 224,
-    "timeYear": 224,
+    "status": "up",
+    "uptime": "99.54%",
+    "uptimeDay": "99.40%",
+    "uptimeWeek": "99.54%",
+    "uptimeMonth": "99.54%",
+    "uptimeYear": "99.54%",
+    "time": 240,
+    "timeDay": 268,
+    "timeWeek": 240,
+    "timeMonth": 240,
+    "timeYear": 240,
     "dailyMinutesDown": {
-      "2025-08-29": 1
+      "2025-08-29": 9
     }
   },
   {
@@ -24,19 +24,19 @@
     "url": "https://dhrv.pw",
     "icon": "https://icons.duckduckgo.com/ip3/dhrv.pw.ico",
     "slug": "dhruv-portfolio",
-    "status": "down",
-    "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
-    "time": 164,
-    "timeDay": 197,
-    "timeWeek": 164,
-    "timeMonth": 164,
-    "timeYear": 164,
+    "status": "up",
+    "uptime": "99.57%",
+    "uptimeDay": "99.44%",
+    "uptimeWeek": "99.57%",
+    "uptimeMonth": "99.57%",
+    "uptimeYear": "99.57%",
+    "time": 206,
+    "timeDay": 255,
+    "timeWeek": 206,
+    "timeMonth": 206,
+    "timeYear": 206,
     "dailyMinutesDown": {
-      "2025-08-29": 0
+      "2025-08-29": 8
     }
   }
 ]
