@@ -75,17 +75,17 @@ jobs:
         run: |
           echo "=== Directory Analysis ==="
           
-          # Check traditional Sapper export path
-          if [ -d "site/status-page/__sapper__/export" ] && [ "$(ls -A site/status-page/__sapper__/export 2>/dev/null)" ]; then
+          # Check for the new/common output directories first
+          if [ -d "site" ] && [ -f "site/index.html" ]; then
+            echo "Found index.html directly in site/ - using this"
+            echo "publish_dir=site/" >> $GITHUB_OUTPUT
+            echo "Selected: site/"
+            
+          # Check traditional Sapper export path  
+          elif [ -d "site/status-page/__sapper__/export" ] && [ "$(ls -A site/status-page/__sapper__/export 2>/dev/null)" ]; then
             echo "Found populated __sapper__/export directory"
             echo "publish_dir=site/status-page/__sapper__/export/" >> $GITHUB_OUTPUT
             echo "Selected: site/status-page/__sapper__/export/"
-            
-          # Check if site directory has index.html directly
-          elif [ -f "site/index.html" ]; then
-            echo "Found index.html directly in site/"
-            echo "publish_dir=site/" >> $GITHUB_OUTPUT
-            echo "Selected: site/"
             
           # Look for any directory with index.html under site
           elif [ -d "site" ] && [ "$(find site -name "index.html" 2>/dev/null | head -1)" ]; then
@@ -97,7 +97,7 @@ jobs:
           else
             echo "No suitable publish directory found, using site/ as fallback"
             mkdir -p site
-            echo "<h1>Upptime site generation failed</h1>" > site/index.html
+            echo "<h1>Upptime site generation failed</h1><p>Please check the workflow logs.</p>" > site/index.html
             echo "publish_dir=site/" >> $GITHUB_OUTPUT
             echo "Selected: site/ (fallback)"
           fi
@@ -108,6 +108,13 @@ jobs:
           if [ -d "$CHOSEN_DIR" ]; then
             echo "Contents of $CHOSEN_DIR:"
             ls -la "$CHOSEN_DIR" | head -10
+            echo "=== Looking for history directory ==="
+            if [ -d "${CHOSEN_DIR}history" ]; then
+              echo "History directory found!"
+              ls -la "${CHOSEN_DIR}history/" | head -10
+            else
+              echo "No history directory found in $CHOSEN_DIR"
+            fi
           else
             echo "ERROR: Chosen directory does not exist!"
           fi
