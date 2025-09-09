@@ -45,11 +45,29 @@ jobs:
           ls -la site/ 2>/dev/null || echo "site directory not accessible"
           echo "Checking for expected publish directory:"
           ls -la "site/status-page/__sapper__/export/" 2>/dev/null || echo "Expected publish directory not found"
+          echo "Looking for alternative directories:"
+          find site -name "index.html" 2>/dev/null || echo "No index.html found in site"
+      - name: Find correct publish directory
+        id: find-publish-dir
+        run: |
+          echo "=== Directory Analysis ==="
+          if [ -d "site/status-page/__sapper__/export" ] && [ "$(ls -A site/status-page/__sapper__/export)" ]; then
+            echo "Found populated __sapper__/export directory"
+            echo "publish_dir=site/status-page/__sapper__/export/" >> $GITHUB_OUTPUT
+          elif [ -d "site" ] && [ "$(find site -name "index.html" | head -1)" ]; then
+            PUBLISH_DIR=$(dirname $(find site -name "index.html" | head -1))
+            echo "Found index.html at: $PUBLISH_DIR"
+            echo "publish_dir=$PUBLISH_DIR" >> $GITHUB_OUTPUT
+          else
+            echo "Fallback to site/ directory"
+            echo "publish_dir=site/" >> $GITHUB_OUTPUT
+          fi
+          echo "Selected publish directory: $(cat $GITHUB_OUTPUT | grep publish_dir | cut -d'=' -f2)"
       - uses: peaceiris/actions-gh-pages@v4
         name: GitHub Pages Deploy
         with:
           github_token: ${{ secrets.GH_PAT || github.token }}
-          publish_dir: "site/status-page/__sapper__/export/"
+          publish_dir: ${{ steps.find-publish-dir.outputs.publish_dir }}
           force_orphan: "false"
           user_name: "Upptime Bot"
           user_email: "73812536+upptime-bot@users.noreply.github.com"
