@@ -32,6 +32,13 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GH_PAT || github.token }}
+      - name: Force site regeneration
+        run: |
+          echo "Forcing site regeneration by removing any cached files"
+          rm -rf site/ || true
+          rm -rf _site/ || true
+          rm -rf dist/ || true
+          echo "Site directories cleaned"
       - name: Generate site
         uses: upptime/uptime-monitor@v1.41.0
         with:
