@@ -38,6 +38,13 @@ jobs:
           command: "site"
         env:
           GH_PAT: ${{ secrets.GH_PAT || github.token }}
+      - name: Debug directory structure
+        run: |
+          echo "Listing site directory contents:"
+          find site -type f 2>/dev/null || echo "site directory not found"
+          ls -la site/ 2>/dev/null || echo "site directory not accessible"
+          echo "Checking for expected publish directory:"
+          ls -la "site/status-page/__sapper__/export/" 2>/dev/null || echo "Expected publish directory not found"
       - uses: peaceiris/actions-gh-pages@v4
         name: GitHub Pages Deploy
         with:
