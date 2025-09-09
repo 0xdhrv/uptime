@@ -21,7 +21,7 @@ status-website:
   logoUrl: https://avatars.githubusercontent.com/u/19857414?v=4
   name: Dhruv Suthar
   introTitle: "uptime"
-  introMessage: "uptime monitoring for Dhruv's services"
+  introMessage: "uptime monitoring for Dhruv's services - updated"
   links:
     - rel: stylesheet
       href: https://cdn-bi1.pages.dev/sans.css
@@ -31,6 +31,8 @@ status-website:
       href: /
     - title: GitHub
       href: https://github.com/$OWNER/$REPO
+    - title: History
+      href: /history
 
 # Upptime also supports notifications, assigning issues, and more
 # See https://upptime.js.org/docs/configuration

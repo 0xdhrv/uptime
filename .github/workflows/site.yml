@@ -21,6 +21,10 @@ on:
   repository_dispatch:
     types: [static_site]
   workflow_dispatch:
+  push:
+    paths:
+      - '.upptimerc.yml'
+      - '.github/workflows/site.yml'
 jobs:
   release:
     name: Build and deploy site
@@ -32,17 +36,97 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GH_PAT || github.token }}
+      - name: Force site regeneration
+        run: |
+          echo "Forcing site regeneration by removing any cached files"
+          rm -rf site/ || true
+          rm -rf _site/ || true
+          rm -rf dist/ || true
+          echo "Site directories cleaned"
       - name: Generate site
         uses: upptime/uptime-monitor@v1.41.0
         with:
           command: "site"
         env:
           GH_PAT: ${{ secrets.GH_PAT || github.token }}
+        continue-on-error: false
+      - name: List all site contents for debugging
+        run: |
+          echo "=== Full site directory tree ==="
+          find site -type f 2>/dev/null | head -50 || echo "site directory not found"
+          echo "=== Looking for HTML files specifically ==="
+          find . -name "*.html" -not -path "./.git/*" 2>/dev/null | head -20
+          echo "=== Checking various possible output directories ==="
+          for dir in "site" "site/status-page" "site/status-page/__sapper__" "site/status-page/__sapper__/export" "_site" "dist" "build" "out"; do
+            if [ -d "$dir" ]; then
+              echo "Directory $dir exists:"
+              ls -la "$dir/" | head -10
+            else
+              echo "Directory $dir does not exist"
+            fi
+          done
+      - name: Debug directory structure
+        run: |
+          echo "Listing site directory contents:"
+          find site -type f 2>/dev/null || echo "site directory not found"
+          ls -la site/ 2>/dev/null || echo "site directory not accessible"
+          echo "Checking for expected publish directory:"
+          ls -la "site/status-page/__sapper__/export/" 2>/dev/null || echo "Expected publish directory not found"
+          echo "Looking for alternative directories:"
+          find site -name "index.html" 2>/dev/null || echo "No index.html found in site"
+      - name: Find and prepare publish directory
+        id: find-publish-dir
+        run: |
+          echo "=== Directory Analysis ==="
+          
+          # Check for the new/common output directories first
+          if [ -d "site" ] && [ -f "site/index.html" ]; then
+            echo "Found index.html directly in site/ - using this"
+            echo "publish_dir=site/" >> $GITHUB_OUTPUT
+            echo "Selected: site/"
+            
+          # Check traditional Sapper export path  
+          elif [ -d "site/status-page/__sapper__/export" ] && [ "$(ls -A site/status-page/__sapper__/export 2>/dev/null)" ]; then
+            echo "Found populated __sapper__/export directory"
+            echo "publish_dir=site/status-page/__sapper__/export/" >> $GITHUB_OUTPUT
+            echo "Selected: site/status-page/__sapper__/export/"
+            
+          # Look for any directory with index.html under site
+          elif [ -d "site" ] && [ "$(find site -name "index.html" 2>/dev/null | head -1)" ]; then
+            INDEX_DIR=$(dirname $(find site -name "index.html" 2>/dev/null | head -1))
+            echo "Found index.html at: $INDEX_DIR"
+            echo "publish_dir=$INDEX_DIR/" >> $GITHUB_OUTPUT
+            echo "Selected: $INDEX_DIR/"
+            
+          else
+            echo "No suitable publish directory found, using site/ as fallback"
+            mkdir -p site
+            echo "<h1>Upptime site generation failed</h1><p>Please check the workflow logs.</p>" > site/index.html
+            echo "publish_dir=site/" >> $GITHUB_OUTPUT
+            echo "Selected: site/ (fallback)"
+          fi
+          
+          # Verify the chosen directory
+          CHOSEN_DIR=$(grep 'publish_dir=' $GITHUB_OUTPUT | cut -d'=' -f2)
+          echo "=== Verifying chosen directory: $CHOSEN_DIR ==="
+          if [ -d "$CHOSEN_DIR" ]; then
+            echo "Contents of $CHOSEN_DIR:"
+            ls -la "$CHOSEN_DIR" | head -10
+            echo "=== Looking for history directory ==="
+            if [ -d "${CHOSEN_DIR}history" ]; then
+              echo "History directory found!"
+              ls -la "${CHOSEN_DIR}history/" | head -10
+            else
+              echo "No history directory found in $CHOSEN_DIR"
+            fi
+          else
+            echo "ERROR: Chosen directory does not exist!"
+          fi
       - uses: peaceiris/actions-gh-pages@v4
         name: GitHub Pages Deploy
         with:
           github_token: ${{ secrets.GH_PAT || github.token }}
-          publish_dir: "site/status-page/__sapper__/export/"
+          publish_dir: ${{ steps.find-publish-dir.outputs.publish_dir }}
           force_orphan: "false"
           user_name: "Upptime Bot"
           user_email: "73812536+upptime-bot@users.noreply.github.com"
