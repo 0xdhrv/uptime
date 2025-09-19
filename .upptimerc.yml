@@ -7,6 +7,8 @@ sites:
     url: https://wf.dhrv.pw
   - name: Dhruv Portfolio
     url: https://dhrv.pw
+  - name: Dhruv Resume
+    url: https://cv.dhrv.pw
 
 assignees:
   - 0xdhrv
