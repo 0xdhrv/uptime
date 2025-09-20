@@ -26,6 +26,8 @@ status-website:
   links:
     - rel: stylesheet
       href: https://cdn-bi1.pages.dev/sans.css
+    - rel: stylesheet
+      href: https://cdn.jsdelivr.net/gh/0xdhrv/uptime@master/assets/theme.css
   css: "body { font-family: 'D', sans-serif; }"
   navbar:
     - title: Status
