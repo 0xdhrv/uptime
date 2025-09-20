@@ -1,54 +1,86 @@
 :root {
-  --body-background-color: #fdfdfc;
-  --body-text-color: #1b1b18;
-  --card-background-color: #f9f9f8;
-  --nav-background-color: #f9f9f8;
-  --nav-border-bottom-color: #e3e3e0;
-  --nav-current-border-bottom-color: #1b1b18;
-  --card-border-color: #e3e3e0;
-  --down-border-left-color: #e54d2e;
-  --down-background-color: #fff0ee;
-  --degraded-border-left-color: #ffb224;
-  --up-border-left-color: #46a758;
-  --tag-color: #fdfdfc;
-  --tag-up-background-color: #46a758;
-  --tag-down-background-color: #e54d2e;
-  --tag-degraded-background-color: #ffb224;
-  --change-background-color: #ffb224;
-  --error-button-border-color: #706f6c;
-  --error-button-background-color: #eeeeec;
-  --error-button-color: #1b1b18;
-  --submit-button-border-color: #706f6c;
-  --submit-button-background-color: #eeeeec;
-  --submit-button-color: #1b1b18;
+  --orange-50:#fefaf9;
+  --orange-100:#fff1eb;
+  --orange-200:#ffddcf;
+  --orange-300:#fec1a8;
+  --orange-400:#fba581;
+  --orange-500:#f88756;
+  --orange-600:#c9683d;
+  --orange-700:#a25330;
+  --orange-800:#743a20;
+  --orange-900:#4a2211;
+  --orange-950:#230d05;
+}
+
+@supports (color: oklch(0% 0 0)) {
+  @media (color-gamut: p3) {
+    :root {
+      --orange-50:oklch(0.988281 0.0046875 43.3333);
+      --orange-100:oklch(0.966797 0.0171875 43.3333);
+      --orange-200:oklch(0.921875 0.0421875 43.3333);
+      --orange-300:oklch(0.859375 0.078125 43.3333);
+      --orange-400:oklch(0.798828 0.114063 43.3333);
+      --orange-500:oklch(0.738281 0.151562 43.3333);
+      --orange-600:oklch(0.623047 0.135937 43.3333);
+      --orange-700:oklch(0.53125 0.115625 43.3333);
+      --orange-800:oklch(0.417969 0.090625 43.3333);
+      --orange-900:oklch(0.304688 0.065625 43.3333);
+      --orange-950:oklch(0.191406 0.040625 43.3333);
+    }
+  }
+}
+
+:root {
+  --body-background-color: var(--orange-50);
+  --body-text-color: var(--orange-950);
+  --card-background-color: #ffffff;
+  --nav-background-color: #ffffff;
+  --nav-border-bottom-color: var(--orange-400);
+  --nav-current-border-bottom-color: var(--orange-600);
+  --card-border-color: var(--orange-400);
+  --down-border-left-color: var(--orange-700);
+  --down-background-color: var(--orange-100);
+  --degraded-border-left-color: var(--orange-500);
+  --up-border-left-color: var(--orange-600);
+  --tag-color: #ffffff;
+  --tag-up-background-color: var(--orange-600);
+  --tag-down-background-color: var(--orange-700);
+  --tag-degraded-background-color: var(--orange-500);
+  --change-background-color: var(--orange-500);
+  --error-button-border-color: var(--orange-400);
+  --error-button-background-color: var(--orange-100);
+  --error-button-color: var(--orange-950);
+  --submit-button-border-color: var(--orange-400);
+  --submit-button-background-color: var(--orange-100);
+  --submit-button-color: var(--orange-950);
   --graph-opacity: 1;
   --graph-filter: none;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --body-background-color: #161615;
-    --body-text-color: #ededec;
-    --card-background-color: #232320;
-    --nav-background-color: #232320;
-    --nav-border-bottom-color: #51504b;
-    --nav-current-border-bottom-color: #ededec;
-    --card-border-color: #51504b;
-    --down-border-left-color: #e5484d;
-    --down-background-color: #42262a;
-    --degraded-border-left-color: #ffc53d;
-    --up-border-left-color: #46a758;
-    --tag-color: #ededec;
-    --tag-up-background-color: #46a758;
-    --tag-down-background-color: #e5484d;
-    --tag-degraded-background-color: #ffc53d;
-    --change-background-color: #ffc53d;
-    --error-button-border-color: #a09f98;
-    --error-button-background-color: #282826;
-    --error-button-color: #ededec;
-    --submit-button-border-color: #a09f98;
-    --submit-button-background-color: #282826;
-    --submit-button-color: #ededec;
+    --body-background-color: var(--orange-950);
+    --body-text-color: var(--orange-50);
+    --card-background-color: #000000;
+    --nav-background-color: #000000;
+    --nav-border-bottom-color: var(--orange-700);
+    --nav-current-border-bottom-color: var(--orange-300);
+    --card-border-color: var(--orange-700);
+    --down-border-left-color: var(--orange-500);
+    --down-background-color: var(--orange-900);
+    --degraded-border-left-color: var(--orange-400);
+    --up-border-left-color: var(--orange-500);
+    --tag-color: var(--orange-50);
+    --tag-up-background-color: var(--orange-500);
+    --tag-down-background-color: var(--orange-700);
+    --tag-degraded-background-color: var(--orange-400);
+    --change-background-color: var(--orange-400);
+    --error-button-border-color: var(--orange-600);
+    --error-button-background-color: var(--orange-800);
+    --error-button-color: var(--orange-50);
+    --submit-button-border-color: var(--orange-600);
+    --submit-button-background-color: var(--orange-800);
+    --submit-button-color: var(--orange-50);
     --graph-opacity: 1;
     --graph-filter: none;
   }
