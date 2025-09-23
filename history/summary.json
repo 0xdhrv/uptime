@@ -4,7 +4,7 @@
     "url": "https://wf.dhrv.pw",
     "icon": "https://icons.duckduckgo.com/ip3/wf.dhrv.pw.ico",
     "slug": "week-flow",
-    "status": "up",
+    "status": "down",
     "uptime": "99.89%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
@@ -16,6 +16,7 @@
     "timeMonth": 211,
     "timeYear": 211,
     "dailyMinutesDown": {
+      "2025-09-23": 0,
       "2025-09-04": 24,
       "2025-09-01": 18
     }
@@ -25,7 +26,7 @@
     "url": "https://dhrv.pw",
     "icon": "https://icons.duckduckgo.com/ip3/dhrv.pw.ico",
     "slug": "dhruv-portfolio",
-    "status": "up",
+    "status": "down",
     "uptime": "99.89%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
@@ -37,6 +38,7 @@
     "timeMonth": 186,
     "timeYear": 186,
     "dailyMinutesDown": {
+      "2025-09-23": 0,
       "2025-09-04": 23,
       "2025-09-01": 18
     }
@@ -46,7 +48,7 @@
     "url": "https://cv.dhrv.pw",
     "icon": "https://icons.duckduckgo.com/ip3/cv.dhrv.pw.ico",
     "slug": "dhruv-resume",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
