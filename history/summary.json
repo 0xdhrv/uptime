@@ -4,9 +4,9 @@
     "url": "https://wf.dhrv.pw",
     "icon": "https://icons.duckduckgo.com/ip3/wf.dhrv.pw.ico",
     "slug": "week-flow",
-    "status": "up",
+    "status": "down",
     "uptime": "99.98%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.98%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.98%",
@@ -19,7 +19,8 @@
       "2025-11-28": 14,
       "2025-12-15": 35,
       "2025-12-18": 9,
-      "2026-02-23": 22
+      "2026-02-23": 22,
+      "2026-09-07": 0
     }
   },
   {
@@ -27,16 +28,16 @@
     "url": "https://dhrv.pw",
     "icon": "https://icons.duckduckgo.com/ip3/dhrv.pw.ico",
     "slug": "dhruv-portfolio",
-    "status": "down",
-    "uptime": "99.73%",
-    "uptimeDay": "27.68%",
-    "uptimeWeek": "89.67%",
-    "uptimeMonth": "97.58%",
-    "uptimeYear": "99.73%",
-    "time": 249,
-    "timeDay": 216,
-    "timeWeek": 352,
-    "timeMonth": 326,
+    "status": "up",
+    "uptime": "99.70%",
+    "uptimeDay": "15.14%",
+    "uptimeWeek": "87.88%",
+    "uptimeMonth": "97.17%",
+    "uptimeYear": "99.70%",
+    "time": 248,
+    "timeDay": 196,
+    "timeWeek": 330,
+    "timeMonth": 321,
     "timeYear": 255,
     "dailyMinutesDown": {
       "2025-12-15": 35,
@@ -44,7 +45,7 @@
       "2026-04-27": 231,
       "2026-06-08": 75,
       "2026-08-15": 17,
-      "2026-09-07": 137,
+      "2026-09-07": 317,
       "2026-09-06": 905
     }
   },
@@ -53,22 +54,23 @@
     "url": "https://cv.dhrv.pw",
     "icon": "https://icons.duckduckgo.com/ip3/cv.dhrv.pw.ico",
     "slug": "dhruv-resume",
-    "status": "up",
+    "status": "down",
     "uptime": "99.98%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.98%",
-    "time": 324,
-    "timeDay": 794,
-    "timeWeek": 357,
-    "timeMonth": 332,
-    "timeYear": 324,
+    "time": 323,
+    "timeDay": 409,
+    "timeWeek": 315,
+    "timeMonth": 322,
+    "timeYear": 323,
     "dailyMinutesDown": {
       "2025-11-28": 14,
       "2025-12-15": 35,
       "2025-12-18": 9,
-      "2026-02-23": 22
+      "2026-02-23": 22,
+      "2026-09-07": 0
     }
   }
 ]
