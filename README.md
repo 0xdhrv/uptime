@@ -1,5 +1,7 @@
 # [📈 Live Status](https://demo.upptime.js.org): <!--live status--> **🟧 Partial outage**
 
+<a href="https://github.com/0xdhrv/uptime/stargazers"><img src="https://shieldcn.dev/github/stars/0xdhrv/uptime.svg?variant=secondary" alt="GitHub stars" /></a> <a href="LICENSE"><img src="https://shieldcn.dev/github/license/0xdhrv/uptime.svg?variant=secondary" alt="License" /></a> <a href="https://github.com/0xdhrv/uptime/commits"><img src="https://shieldcn.dev/github/commits/0xdhrv/uptime.svg?variant=secondary" alt="Last commit" /></a>
+
 This repository contains the open-source uptime monitor and status page for [Upptime](https://upptime.js.org), powered by [Upptime](https://github.com/upptime/upptime).
 
 [![Uptime CI](https://github.com/0xdhrv/uptime/workflows/Uptime%20CI/badge.svg)](https://github.com/0xdhrv/uptime/actions/workflows/uptime.yml)
