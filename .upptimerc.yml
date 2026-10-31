@@ -45,6 +45,18 @@ status-website:
   introMessage: >-
     Availability and response times for my websites and projects.
     Checked by [Upptime](https://upptime.js.org) on a five-minute schedule.
+  # Sapper cannot discover links rendered only after client-side summary loading.
+  # Keep these export seeds aligned with the monitor slugs above.
+  customBodyHtml: |
+    <div hidden data-history-export-routes>
+      <a href="/uptime/history/dhruv-portfolio">Portfolio history</a>
+      <a href="/uptime/history/dhruv-resume">Resume history</a>
+      <a href="/uptime/history/dhrv-cloud">dhrv.cloud history</a>
+      <a href="/uptime/history/oneko">Oneko history</a>
+      <a href="/uptime/history/microkeys">Microkeys history</a>
+      <a href="/uptime/history/lilpix">Lilpix history</a>
+      <a href="/uptime/history/goto">Goto history</a>
+    </div>
   metaTags:
     - name: description
       content: Availability, response times, and incident history for Dhruv Suthar's websites and projects.
