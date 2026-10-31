@@ -1,41 +1,62 @@
-# Change these first
-owner: 0xdhrv # Your GitHub organization or username, where this repository lives
-repo: uptime # The name of this repository
+owner: 0xdhrv
+repo: uptime
+user-agent: 0xdhrv
+graphBorderColor: "#c9683d"
+graphBackgroundColor: "#fba58133"
 
 sites:
-  - name: Week Flow
-    url: https://wf.dhrv.pw
+  # Keep these slugs so the existing portfolio and resume history is retained.
   - name: Dhruv Portfolio
+    slug: dhruv-portfolio
     url: https://dhrv.pw
   - name: Dhruv Resume
+    slug: dhruv-resume
     url: https://cv.dhrv.pw
+  - name: dhrv.cloud
+    slug: dhrv-cloud
+    url: https://dhrv.cloud
+  - name: Oneko
+    slug: oneko
+    url: https://oneko.dhrv.pw
+  - name: Microkeys
+    slug: microkeys
+    url: https://microkeys.dhrv.pw
+  - name: Lilpix
+    slug: lilpix
+    url: https://lilpix.dhrv.pw
+  - name: Goto
+    slug: goto
+    url: https://goto.dhrv.pw
+    expectedStatusCodes:
+      - 200
+    __dangerous__body_down_if_text_missing: "<title>Goto, a private link shortener</title>"
 
 assignees:
   - 0xdhrv
 
-
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
   baseUrl: /uptime
-  customThemeCss: https://raw.githubusercontent.com/0xdhrv/uptime/master/assets/radix-theme.css
+  themeUrl: https://0xdhrv.github.io/uptime/theme.css
   logoUrl: https://avatars.githubusercontent.com/u/19857414?v=4
+  logoHref: https://dhrv.pw
+  favicon: https://avatars.githubusercontent.com/u/19857414?v=4
   name: Dhruv Suthar
-  introTitle: "uptime"
-  introMessage: "uptime monitoring for Dhruv's services - updated"
-  links:
-    - rel: stylesheet
-      href: https://cdn-bi1.pages.dev/sans.css
-    - rel: stylesheet
-      href: https://cdn.jsdelivr.net/gh/0xdhrv/uptime@master/assets/theme.css
-  css: "body { font-family: 'D', sans-serif; }"
+  introTitle: Status
+  introMessage: >-
+    Availability and response times for my websites and projects.
+    Checked by [Upptime](https://upptime.js.org) on a five-minute schedule.
+  metaTags:
+    - name: description
+      content: Availability, response times, and incident history for Dhruv Suthar's websites and projects.
+    - name: color-scheme
+      content: light dark
   navbar:
     - title: Status
-      href: /
+      href: /uptime/
+    - title: Website
+      href: https://dhrv.pw
     - title: GitHub
       href: https://github.com/$OWNER/$REPO
-    - title: History
-      href: /history
 
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+i18n:
+  footer: "[Dhruv Suthar](https://dhrv.pw) · Powered by [Upptime](https://upptime.js.org) · [Source]($REPO)"
