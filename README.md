@@ -67,6 +67,22 @@ before using future feature branches; Upptime currently has no config option for
 preserving custom branch filters. The other six workflows are unchanged and
 have no push or pull-request triggers.
 
+### History URLs
+
+History belongs to each monitor, for example
+<https://0xdhrv.github.io/uptime/history/goto>. There is no aggregate `/history`
+route. The old navbar link omitted `/uptime` and pointed to a route that does not
+exist; use the service links on the status page instead.
+
+Upptime loads those service links only in the browser. Sapper's static exporter
+cannot discover them, so direct requests previously returned GitHub Pages' 404
+before the app fallback rendered the monitor. The supported `customBodyHtml`
+setting now provides hidden, server-rendered export links for every configured
+monitor. Sapper generates real history HTML during each normal export; no copied
+fallback pages or custom status-page package are needed. Keep these links aligned
+with `sites[].slug` when adding or renaming monitors. Both the links and generated
+pages live under `/uptime`.
+
 To activate these changes after merging into `master`:
 
 1. Let **Setup CI** complete, then run **Uptime CI** and **Summary CI** to refresh
