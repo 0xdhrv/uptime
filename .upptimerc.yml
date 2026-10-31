@@ -24,6 +24,12 @@ sites:
   - name: Lilpix
     slug: lilpix
     url: https://lilpix.dhrv.pw
+  - name: Goto
+    slug: goto
+    url: https://goto.dhrv.pw
+    expectedStatusCodes:
+      - 200
+    __dangerous__body_down_if_text_missing: "<title>Goto, a private link shortener</title>"
 
 assignees:
   - 0xdhrv

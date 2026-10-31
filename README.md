@@ -33,10 +33,13 @@ With [Upptime](https://upptime.js.org), you can get your own unlimited and free 
 - [Oneko](https://oneko.dhrv.pw)
 - [Microkeys](https://microkeys.dhrv.pw)
 - [Lilpix](https://lilpix.dhrv.pw)
+- [Goto](https://goto.dhrv.pw)
 
-The four new monitors start collecting history after Setup CI runs. Existing portfolio
+The five new monitors start collecting history after Setup CI runs. Existing portfolio
 and résumé slugs are unchanged, preserving their history. Week Flow is retired from
 the live summary; its historical logs and graphs remain in Git.
+Goto checks its public landing page for HTTP 200 and the expected page title;
+this does not exercise authenticated dashboard or short-link creation behavior.
 
 ## Configuration and deployment
 
@@ -45,11 +48,19 @@ served by GitHub Pages at `/uptime/theme.css`, with a local Inter font under
 `assets/fonts/`. The theme follows the system light/dark preference and uses the
 neutral palette, orange accent, and narrow typography-led layout from [dhrv.pw](https://dhrv.pw).
 
-All eight generated Upptime workflows are retained. Uptime CI checks endpoints on
+All eight Upptime workflows are retained. Uptime CI checks endpoints on
 a five-minute cron schedule; GitHub may delay scheduled runs. Setup CI runs when
 `.upptimerc.yml` changes and regenerates data, README, graphs, and the status page.
-Static Site CI also rebuilds when assets change. Do not edit generated workflows
-by hand: template updates overwrite them.
+Static Site CI also rebuilds when assets change. Both deployment workflows now
+accept push events only on `master` and have a `master` job guard, so pushing this
+feature branch or opening its draft PR does not deploy the page.
+
+The branch filters and job guards in `setup.yml` and `site.yml` are local
+customizations. Upptime's template updater regenerates these files and can
+overwrite the guards. Review regenerated workflow changes and retain these guards
+before using future feature branches; Upptime currently has no config option for
+preserving custom branch filters. The other six workflows are unchanged and
+have no push or pull-request triggers.
 
 To activate these changes after merging into `master`:
 
